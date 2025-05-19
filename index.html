@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGO-AUTOMATICO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lab(67.76% 38.43 -37.4);
+        }
+        header, footer {
+            background-color: lab(53.04% 39.26 -37.7);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .container {
+            display: flex;
+            padding: 40px;
+        }
+        .content {
+            flex: 1;
+            padding-right: 40px;
+        }
+        .content h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .tabs {
+            margin-bottom: 20px;
+        }
+        .tabs span {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .features {
+            margin-top: 10px;
+        }
+        .features li {
+            margin-bottom: 10px;
+        }
+        .features li::before {
+            content: "✅ ";
+        }
+        .rating {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .image {
+            flex-shrink: 0;
+        }
+        .image img {
+             width: 350px;
+             height: auto;
+             border: 3px solid #00aaff;
+             border-radius: 10px;
+             object-fit: cover;
+        }
+        footer {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        footer div {
+            flex: 1 1 200px;
+        }
+.panel-control {
+    background-color: #fff;
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 15px;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.panel-control h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.status {
+    color: green;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.payment {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment .badge {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.badge.green { background-color: #3cb371; }
+.badge.blue { background-color: #1e90ff; }
+.badge.orange { background-color: #ffa500; }
+
+.ver-mas {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.ver-mas:hover {
+    text-decoration: underline;
+}
+ .descripcion-flex {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.descripcion-texto {
+    flex: 1;
+    min-width: 250px;
+}
+
+.descripcion-flex .image {
+    flex-shrink: 0;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lab(53.04% 39.26 -37.7);
+    padding: 15px 40px;
+    font-family: Arial, sans-serif;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    color: #080808;
+}
+
+.logo img {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.user-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.login-btn {
+    color: #090909;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: lab(53.04% 39.26 -37.7);
+}
+
+.register-btn {
+    background-color: #040404;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+    background-color: lab(53.04% 39.26 -37.7);
+}
+
+/* Estilos base (ya funcionan bien en pantallas grandes) */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lab(53.04% 39.26 -37.7);
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .user-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .login-btn, .register-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .content {
+        padding-right: 0;
+    }
+
+    .image {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .image img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+     <header class="navbar">
+    <div class="logo">
+        <img src="imagen/targeta.jpg" alt="AutoPago" />
+        <span><strong>AutoPago</strong></span>
+    </div>
+    <nav class="nav-links">
+        <a href="#">Inicio</a>
+        <a href="#">Servicios</a>
+        <a href="#">¿Cómo Funciona?</a>
+        <a href="#">Precios</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <div class="user-actions">
+        <a href="login.html" class="login-btn">Iniciar Sesión</a>
+        <a href="registro.html" class="register-btn">Registrarse</a>
+    </div>
+</header>
+   
+    </header>
+
+    <main class="container">
+        <!-- Cambios dentro de <main class="container"> -->
+
+<div class="content">
+    <h1>PAGO-AUTOMATICO</h1>
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="descripcion">DESCRIPCIÓN</button>
+        <button class="tab-btn" data-tab="contacto">CONTACTO</button>
+        <button class="tab-btn" data-tab="detalles">DETALLES</button>
+        <button class="tab-btn" data-tab="envio">ENVÍO</button>
+        <button class="tab-btn" data-tab="panel">PANEL DE CONTROL</button>
+        
+    </div>
+
+   <div id="descripcion" class="tab-content active">
+    <div class="descripcion-flex">
+        <div class="descripcion-texto">
+            <p><strong>Sistema de pago automático con innovadoras capacidades de inteligencia artificial</strong></p>
+            <ul class="features">
+                <li>Elimina las largas filas con un sistema de cobro sin contacto</li>
+                <li>Mejora la experiencia del cliente y agiliza el proceso de compra</li>
+                <li>Tecnología de reconocimiento de productos y pago automático</li>
+                <li>Ideal para supermercados, centros comerciales y grandes tiendas</li>
+            </ul>
+            <div class="rating">
+                ★★★★★ 4.5 Opiniones
+            </div>
+        </div>
+        <div class="image">
+            <img src="imagen/imagen1.png" alt="Sistema de Pago Automático">
+        </div>
+    </div>
+
+   </div>
+    <div id="contacto" class="tab-content" style="display:none;">
+        <h3>Contacto</h3>
+        <p>Correo: contacto@pagoautomatico.com</p>
+        <p>Teléfono: +123 456 7890</p>
+        <p>Dirección: Cra 41d #74-95</p>
+    </div>
+
+    <div id="detalles" class="tab-content" style="display:none;">
+        <h3>Detalles del producto</h3>
+        <p>El sistema utiliza IA avanzada para reconocimiento de productos y pagos automáticos rápidos y seguros.</p>
+        <p>Compatible con múltiples métodos de pago y sistemas de inventario.</p>
+    </div>
+
+    <div id="envio" class="tab-content" style="display:none;">
+        <h3>Envío</h3>
+        <p>Ofrecemos envío gratuito a nivel nacional.</p>
+        <p>Tiempo estimado de entrega: 3-5 días hábiles.</p>
+        <p>Política de devoluciones sin complicaciones en 30 días.</p>
+    </div>
+   <div id="panel" class="tab-content" style="display:none;">
+    <section class="panel-control">
+        <div class="info">
+            <h2>Panel de Control</h2>
+            <p class="status">✅ Actualizado</p>
+
+    <div class="payment">
+      <div class="name"> Compra Semanal </div>
+      <div class="price">$450.000/mes</div>
+      <span class="badge green">Próximo: 18 Jun</span>
+    </div>
+
+    <div class="payment">
+      <div class="name">Frutas y Verduras</div>
+      <div class="price">$109.999/mes</div>
+      <span class="badge blue">Próximo: 18 Jun</span>
+    </div>
+
+    <div class="payment">
+      <div class="name">Seguro Auto</div>
+      <div class="price">$890.050/mes</div>
+      <span class="badge orange">Próximo: 19 Jun</span>
+    </div>
+
+    <a href="#" class="ver-mas">Ver todos los pagos →</a>
+  </div>
+</div>
+
+    </main>
+    <footer>
+        <div> Pagos Atomaticos</div>
+        <div>
+            <p>Barranquilla_Colombia</p>
+            <p>Cra 41d #74-95</p>
+            <p>Las Mercedes</p>
+        </div>
+        <div>
+            <p>Pago_Automatico</p>
+            <p>Facebook</p>
+            <p>Instagram</p>
+        </div>
+       
+    </footer>
+    <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remover clase active de todos los botones
+            tabs.forEach(btn => btn.classList.remove('active'));
+            // Ocultar todos los contenidos
+            contents.forEach(content => content.style.display = 'none');
+
+            // Activar el botón clicado
+            tab.classList.add('active');
+            // Mostrar contenido correspondiente
+            const tabId = tab.getAttribute('data-tab');
+            document.getElementById(tabId).style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>
